@@ -51,6 +51,7 @@ main{margin-left:244px;flex:1;min-width:0;padding:0 32px 40px}
 .gloc.busy svg{animation:lpulse 1s ease-in-out infinite}
 .gloc svg{width:14px;height:14px}
 .tb{flex-wrap:nowrap}
+.tb.nst{position:static;transform:none}
 .tb>*{flex-shrink:0}
 .tb>.gt{flex-shrink:1}
 .avb{flex:none}
@@ -1056,7 +1057,7 @@ const NAV = [
 const standalone = () => matchMedia("(display-mode: standalone)").matches || navigator.standalone;
 function shell(body) {
   return `<div class="app"><aside><div class="brand"><span class="logo"><i></i></span>${t("app")}</div>${NAV.map((n) => `<button class="nv ${page === n[0] ? "on" : ""}" data-go="${n[0]}">${ic(n[1])}${t(n[0])}</button>`).join("")}<button class="nv sp" data-act="lock">${ic("out")}${t("so")}</button></aside>
-<main><header class="tb"><button class="ib hbg" data-act="menu" aria-label="Menu"><i></i><i></i><i></i></button>${page === "home" ? `<button class="avb" data-act="pv" aria-label="${t("me")}">${avatar()}</button>` : ""}<span class="fl"></span>${page === "home" ? `<div class="mu clk" id="clk">${clkH()}</div>` : ""}${page === "home" ? `<button class="ib" data-act="lang" aria-label="${t("lang")}">${L() ? "En" : "বাং"}</button><button class="ib" data-act="nt" aria-label="${t("nt")}">${ic("bell")}${S.un ? '<i class="dot"></i>' : ""}</button>` : ""}</header>${page === "home" ? `<div class="gtb"><div class="gl2"><span class="gw">${t(gk())}</span><span class="gw">,</span> <b>${esc(uname())}</b></div><button type="button" class="gloc mu ${LB ? "busy" : ""}" data-act="hloc" aria-label="${t("loct")}">${ic("mappin")}<span>${LB ? t("lfind") : S.autoLoc && S.loc ? esc(cty()) : t("ldet")}</span></button></div>` : ""}${body}</main>
+<main><header class="tb${page === "home" ? " nst" : ""}"><button class="ib hbg" data-act="menu" aria-label="Menu"><i></i><i></i><i></i></button>${page === "home" ? `<button class="avb" data-act="pv" aria-label="${t("me")}">${avatar()}</button>` : ""}<span class="fl"></span>${page === "home" ? `<div class="mu clk" id="clk">${clkH()}</div>` : ""}${page === "home" ? `<button class="ib" data-act="lang" aria-label="${t("lang")}">${L() ? "En" : "বাং"}</button><button class="ib" data-act="nt" aria-label="${t("nt")}">${ic("bell")}${S.un ? '<i class="dot"></i>' : ""}</button>` : ""}</header>${page === "home" ? `<div class="gtb"><div class="gl2"><span class="gw">${t(gk())}</span><span class="gw">,</span> <b>${esc(uname())}</b></div><button type="button" class="gloc mu ${LB ? "busy" : ""}" data-act="hloc" aria-label="${t("loct")}">${ic("mappin")}<span>${LB ? t("lfind") : S.autoLoc && S.loc ? esc(cty()) : t("ldet")}</span></button></div>` : ""}${body}</main>
 </div>`;
 }
 const tzn = () => Intl.DateTimeFormat().resolvedOptions().timeZone || "Asia/Dhaka",
