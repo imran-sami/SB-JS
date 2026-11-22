@@ -1,0 +1,2 @@
+*.js linguist-language=JavaScript linguist-generated=false linguist-detectable=true
+index.html linguist-documentation
