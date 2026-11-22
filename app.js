@@ -32,7 +32,10 @@ main{margin-left:244px;flex:1;min-width:0;padding:0 32px 40px}
 .av{width:42px;height:42px;border-radius:50%;background:var(--a2);color:var(--ax);display:grid;place-items:center;overflow:hidden;border:2px solid var(--ac)}
 .av img{width:100%;height:100%;object-fit:cover}
 .gt{line-height:1.25;display:flex;flex-direction:column;min-width:0}
-.clk{font-size:11px;display:flex;flex-direction:column;align-items:flex-end;white-space:nowrap;line-height:1.3;flex:none;text-align:right}
+.clk{font-size:13px;display:flex;flex-direction:row;align-items:center;gap:10px;white-space:nowrap;line-height:1.3;flex:none;text-align:right;height:40px;padding:0 14px;border:1px solid var(--ln);background:var(--sf);border-radius:12px}
+.clk .sep{width:1px;height:16px;background:var(--ln);flex:none}
+@media(max-width:430px){.clk{gap:6px;font-size:10.5px;height:36px;padding:0 9px;border-radius:10px}}
+@media(max-width:350px){.clk{font-size:10px;padding:0 8px}}
 .clk .tm,.clk .dd{font-variant-numeric:tabular-nums}
 .clk .tm{font-weight:700;color:var(--ink)}
 .fl{flex:1}
@@ -1076,7 +1079,7 @@ const tzn = () => Intl.DateTimeFormat().resolvedOptions().timeZone || "Asia/Dhak
   dpart = (o) =>
     new Date().toLocaleString(L() ? "bn-BD" : "en-GB", Object.assign({ timeZone: tzn() }, o)),
   clkH = () =>
-    `<span class="dd">${dpart({ weekday: "short", day: "numeric", month: "short", year: "numeric" })}</span><span class="tm">${dpart({ hour: "2-digit", minute: "2-digit", second: "2-digit", hour12: true }).toUpperCase()}</span>`;
+    `<span class="dd">${dpart({ weekday: "short", day: "numeric", month: "short", year: "numeric" })}</span>`;
 const gk = () => {
   const h =
     +new Intl.DateTimeFormat("en-GB", { timeZone: tzn(), hour: "numeric", hour12: false }).format(
@@ -1734,7 +1737,6 @@ async function setPic(fl) {
   if (full) S.picT = th;
   save();
   render();
-  toast(t("svd"));
 }
 const loadImg = async (fl) => {
   try {
@@ -1782,7 +1784,6 @@ function crop(im) {
         S.pic = d;
         save();
         render();
-        toast(t("svd"));
       },
       t("sv"),
     ),
@@ -2049,7 +2050,6 @@ const act = {
     IDB("del", "pic_" + K).catch(() => {});
     save();
     render();
-    toast(t("svd"));
   },
   svn() {
     const i = $("#nmi");
